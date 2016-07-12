@@ -14,8 +14,16 @@ extern "C" {
  */
 JNIEXPORT jstring JNICALL Java_com_blueteam_testndk_utils_JniUtils_getStringFromC
   (JNIEnv *env, jobject obj){
-  return (*env)->NewStringUTF(env, "hello java from c");
-  };
+    jclass StringUtils =(*env)->FindClass(env,"com/blueteam/testndk/utils/StringUtils");
+    jobject mStringUtils;
+    jmethodID construction_id = (*env)->GetMethodID(env,StringUtils,"<init>","()V");
+    mStringUtils = (*env)->NewObject(env,StringUtils,construction_id);
+    jmethodID getJavaStrs =(*env)->GetMethodID(env,StringUtils,"getJavaStrs","()Ljava/lang/String;");
+     jstring native_desc = (jstring)(*env)->CallObjectMethod(env,mStringUtils,getJavaStrs);
+//    return (*env)->NewStringUTF(env, "hello java from c");
+    return native_desc;
+};
+
 
 #ifdef __cplusplus
 }

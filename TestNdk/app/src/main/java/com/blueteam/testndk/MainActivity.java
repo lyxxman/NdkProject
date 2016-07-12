@@ -1,12 +1,12 @@
 package com.blueteam.testndk;
 
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import com.blueteam.testndk.utils.JniUtils;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
